@@ -65,7 +65,15 @@ function Upload(filees){
             settingIcon.classList.add("fa-solid","fa-trash");
             settingIcon.style.cursor="pointer";
             settingIcon.addEventListener("click",()=>{
-                settingIcon.parentElement.parentElement.innerHTML="";
+                let elements=settingIcon.parentElement.parentElement.parentElement.children;
+                for (let i = 0; i < elements.length; i++) {
+                    if(elements[i].firstChild.innerText>settingIcon.parentElement.parentElement.firstChild.innerText){
+                        elements[i].firstChild.innerText=elements[i].firstChild.innerText-1;
+                    }
+                }
+                
+                settingIcon.parentElement.parentElement.remove();
+                id--;
                 
             })
             tdSetting.append(settingIcon);
